@@ -45,8 +45,6 @@ class IPAdapter:
         
         # load image encoder
         self.image_encoder = CLIPVisionModelWithProjection.from_pretrained(pretrained_model_name_or_path=self.image_encoder_path,cache_dir=self.image_encoder_path,local_files_only=True,torch_dtype=torch.float16, low_cpu_mem_usage=True)
-        self.image_encoder.enable_model_cpu_offload()
-        self.image_encoder.enable_xformers_memory_efficient_attention()
         self.image_encoder.to(self.device)
         self.clip_image_processor = CLIPImageProcessor()
         # image proj model
